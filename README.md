@@ -1,8 +1,60 @@
-# DNA_alignment
+# DNA Sequence Aligner
 
-## Description
-Finds the optimal alignment for two DNA sequences of arbitrary lengths. This was done by measuring the similarity between two DNA sequences, by calculating their edit distances. In calculating the edit distance, we align the two strings and insert gaps, align two characters that match, and align two characters that mismatch. When inserting a gap there is a cost of 2, to align two characters that mismatch there is a cost of 1, and 0 if they already match. After the alignment is calculated we then use the Needleman-Wunsch method to go backwards thorugh the matrix to recover the optimal alignment. Then we align the two strings of DNA based on their optimal alignment. 
+## Overview
 
-## Acknowledgements
-<https://www.youtube.com/watch?v=18vt6k-2Jbs&ab_channel=AshokKumarT> <br>
-<https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>
+This project computes the optimal alignment between two DNA sequences using dynamic programming. It calculates the **edit distance** by aligning characters (matches/mismatches) or inserting gaps with predefined penalties, then reconstructs the alignment using a backtrace similar to the **Needleman-Wunsch** algorithm.
+
+**Edit costs:**
+
+- Match: `0`
+- Mismatch: `1`
+- Gap: `2`
+
+The final output includes:
+
+- The minimum edit distance
+- A line-by-line alignment of both sequences with associated costs
+
+## Features
+
+- Command-line interface for input file specification
+- Dynamic memory allocation for alignment matrix
+- Backtrace reconstruction of optimal alignment
+- Output written to `OptAlignment.txt`
+- Runtime performance measurement
+
+## Example Usage
+
+$ ./OptDistance  
+Enter path to file: input.txt  
+Execution time is 0.00123 seconds
+
+Where `input.txt` contains two whitespace-separated DNA sequences:
+
+AGTACG  
+ACATAG
+
+Output (`OptAlignment.txt`) might look like:
+
+Edit distance = 4  
+A A 0  
+G C 1  
+T A 1  
+A T 1  
+C A 1  
+G G 0
+
+## Building
+
+This project is written in modern C++17. To build it:
+
+make
+
+Makefile assumes `g++` is installed and available on your `PATH`.
+
+## File Structure
+
+- `main.cpp` - Handles input/output, execution timing  
+- `OptDistance.hpp / OptDistance.cpp` - Core alignment logic and matrix processing  
+- `README.md` - Documentation  
+- `Makefile` - Build instructions
