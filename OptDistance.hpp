@@ -19,9 +19,6 @@ class OptDistance {
     std::string str1;
     std::string str2;
 
-    // distance
-    int distance;
-
     // vector of vectors
     std::vector<std::vector<int>> matrix;
 

@@ -76,7 +76,6 @@ int OptDistance::optDistance() {
                 penalty(str1.at(i), str2.at(j)));
         }
     }
-    this->matrix = matrix;
     // distance is equal to top left corner of matrix (0,0)
     return matrix.at(0).at(0);
 }
